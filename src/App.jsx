@@ -10,14 +10,14 @@ import Home from './pages/Home';
 function App() {
   return (
     <BrowserRouter> 
-        {/* Layout sarmalayıcı (Header, Footer vb. içerir) */}
+        
         <Layout>
-            {/* Switch, sadece ilk eşleşen rotayı render eder */}
+           
             <Switch>
-                {/* Home sayfasını kök yola atar. component={Home} v5 için doğrudur. */}
+               
                 <Route exact path="/" component={Home} /> 
                 
-                {/* Diğer rotalarınız buraya eklenecek */}
+              
             </Switch>
         </Layout>
     </BrowserRouter>

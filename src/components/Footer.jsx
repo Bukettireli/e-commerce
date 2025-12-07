@@ -100,14 +100,7 @@ function Footer() {
                 </div>
             </div>
 
-            
-            <div className="w-full bg-[#FAFAFA] py-6">
-                <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center md:text-left">
-                    <p className="text-sm text-gray-500">
-                        Made With Love By Finland All Right Reserved
-                    </p>
-                </div>
-            </div>
+        
         </footer>
     );
 }

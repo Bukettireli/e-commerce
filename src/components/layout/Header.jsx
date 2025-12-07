@@ -1,70 +1,109 @@
-import React from 'react';
-import { Search, ShoppingBag, User } from 'lucide-react'; 
+import { useState } from 'react';
+import { Search, ShoppingCart, User, Heart, ChevronDown } from 'lucide-react';
 
 function Header() {
+    const [shopDropdownOpen, setShopDropdownOpen] = useState(false);
+
     const navLinks = [
-        { name: 'Erkek', href: '/men' },
-        { name: 'Kadın', href: '/women' },
-        { name: 'Aksesuarlar', href: '/accessories' },
-        { name: 'Hakkımızda', href: '/about' },
-        { name: 'İletişim', href: '/contact' },
+        { name: 'Home', href: '#' },
+        { name: 'Shop', href: '#', hasDropdown: true },
+        { name: 'About', href: '#' },
+        { name: 'Blog', href: '#' },
+        { name: 'Contact', href: '#' },
+        { name: 'Pages', href: '#' },
     ];
 
     return (
-        <header className="sticky top-0 z-40 bg-white shadow-sm border-b border-gray-100 w-full">
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div className="flex justify-between items-center h-16">
-                    
-                    <div className="flex-shrink-0">
-                        <a href="/" className="text-2xl font-extrabold text-[#2DC071] tracking-wider">
-                            BANDAGE
-                        </a>
+        <header className="bg-white" style={{ fontFamily: 'Montserrat, sans-serif' }}>
+            <div className="max-w-[1440px] mx-auto px-6">
+                <div className="flex justify-between items-center h-[58px]">
+                    <div className="flex items-center gap-28">
+                        <h3 className="text-2xl font-bold text-[#252B42]">
+                            Bandage
+                        </h3>
+                        
+                        <nav className="flex gap-5">
+                            {navLinks.map((link) => (
+                                <div key={link.name} className="relative">
+                                    {link.hasDropdown ? (
+                                        <>
+                                            <button 
+                                                className="flex items-center gap-1 text-sm font-bold text-[#737373] hover:text-[#252B42] transition py-2"
+                                                onMouseEnter={() => setShopDropdownOpen(true)}
+                                                onMouseLeave={() => setShopDropdownOpen(false)}
+                                            >
+                                                {link.name}
+                                                <ChevronDown size={16} />
+                                            </button>
+                                            {shopDropdownOpen && (
+                                                <div 
+                                                    className="absolute top-full left-0 mt-2 bg-white shadow-lg border border-gray-200 rounded-md py-8 px-12 z-50"
+                                                    onMouseEnter={() => setShopDropdownOpen(true)}
+                                                    onMouseLeave={() => setShopDropdownOpen(false)}
+                                                >
+                                                    <div className="grid grid-cols-2 gap-x-32 gap-y-6">
+                                                        {/* Kadın Kolonu */}
+                                                        <div>
+                                                            <h6 className="text-base font-bold text-[#252B42] mb-6">Kadın</h6>
+                                                            <div className="space-y-4">
+                                                                <div className="text-sm font-normal text-[#737373] hover:text-[#23A6F0] cursor-pointer">Bags</div>
+                                                                <div className="text-sm font-normal text-[#737373] hover:text-[#23A6F0] cursor-pointer">Belts</div>
+                                                                <div className="text-sm font-normal text-[#737373] hover:text-[#23A6F0] cursor-pointer">Cosmetics</div>
+                                                                <div className="text-sm font-normal text-[#737373] hover:text-[#23A6F0] cursor-pointer">Bags</div>
+                                                                <div className="text-sm font-normal text-[#737373] hover:text-[#23A6F0] cursor-pointer">Hats</div>
+                                                            </div>
+                                                        </div>
+                                                        {/* Erkek Kolonu */}
+                                                        <div>
+                                                            <h6 className="text-base font-bold text-[#252B42] mb-6">Erkek</h6>
+                                                            <div className="space-y-4">
+                                                                <div className="text-sm font-normal text-[#737373] hover:text-[#23A6F0] cursor-pointer">Bags</div>
+                                                                <div className="text-sm font-normal text-[#737373] hover:text-[#23A6F0] cursor-pointer">Belts</div>
+                                                                <div className="text-sm font-normal text-[#737373] hover:text-[#23A6F0] cursor-pointer">Cosmetics</div>
+                                                                <div className="text-sm font-normal text-[#737373] hover:text-[#23A6F0] cursor-pointer">Bags</div>
+                                                                <div className="text-sm font-normal text-[#737373] hover:text-[#23A6F0] cursor-pointer">Hats</div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            )}
+                                        </>
+                                    ) : (
+                                        <a 
+                                            href={link.href}
+                                            className="text-sm font-bold text-[#737373] hover:text-[#252B42] transition py-2 inline-block"
+                                        >
+                                            {link.name}
+                                        </a>
+                                    )}
+                                </div>
+                            ))}
+                        </nav>
                     </div>
-                    
-                    <nav className="hidden lg:flex lg:gap-x-8">
-                        {navLinks.map((link) => (
-                            <a 
-                                key={link.name}
-                                href={link.href}
-                                className="text-sm font-medium text-gray-700 hover:text-[#2DC071] transition duration-150 py-2"
-                            >
-                                {link.name}
-                            </a>
-                        ))}
-                    </nav>
 
-                    <div className="flex items-center gap-x-4">
-                      
-                        <a href="/login" className="flex items-center text-sm font-medium text-[#2DC071] hover:text-green-700 transition duration-150 hidden md:flex">
-                            <User size={18} className="mr-1" />
+                    <div className="flex items-center gap-8">
+                        <div className="flex items-center text-sm font-bold text-[#23A6F0] cursor-pointer">
+                            <User size={12} className="mr-1" />
                             <span>Login / Register</span>
-                        </a>
+                        </div>
 
-                  
-                        <div className="flex items-center gap-x-4">
-                         
-                            <button className="text-gray-700 hover:text-[#2DC071] transition p-1" aria-label="Arama">
-                                <Search size={20} />
-                            </button>
-
-                 
-                            <a href="/cart" className="relative text-gray-700 hover:text-[#2DC071] transition p-1" aria-label="Sepetim">
-                                <ShoppingBag size={20} />
-                                <span className="absolute top-0 right-0 inline-flex items-center justify-center px-1 py-0.5 text-xs font-bold leading-none text-white transform translate-x-1/2 -translate-y-1/2 bg-red-600 rounded-full">
+                        <div className="flex items-center gap-5">
+                            <Search size={16} className="text-[#23A6F0] cursor-pointer" />
+                            
+                            <div className="relative cursor-pointer">
+                                <ShoppingCart size={16} className="text-[#23A6F0]" />
+                                <span className="absolute -top-2 -right-2 text-xs font-normal text-[#23A6F0]">
                                     1
                                 </span>
-                            </a>
-                        </div>
-                        
-                        <button 
-                            className="lg:hidden text-gray-700 hover:text-[#2DC071] transition p-1" 
-                            aria-label="Mobil Menü"
-                        >
-                            <svg className="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
-                            </svg>
-                        </button>
+                            </div>
 
+                            <div className="relative cursor-pointer">
+                                <Heart size={16} className="text-[#23A6F0]" />
+                                <span className="absolute -top-2 -right-2 text-xs font-normal text-[#23A6F0]">
+                                    1
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

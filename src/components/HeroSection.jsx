@@ -1,63 +1,52 @@
-import React from 'react';
 import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 function HeroSection() {
     return (
-        <section className="w-[1440px] h-[716px] relative flex items-center overflow-hidden ">
-            
-            
+        <section className="relative w-full h-[716px] flex items-center overflow-hidden" style={{ fontFamily: 'Montserrat, sans-serif' }}>
             <img 
                 src="/homebg.jpg" 
                 alt="Hero Background"
-                className="absolute w-full h-full object-cover object-center w-[1440px] h-[716px]"
+                className="absolute inset-0 w-full h-full object-cover object-center"
             />
             
             <div className="max-w-[1440px] mx-auto px-6 w-full h-full relative z-10 flex items-center">
-                
-               
-                <div className="flex flex-col justify-center w-full md:w-1/2 lg:w-[500px]">
-                    
-                    <p className="text-base font-bold tracking-wide mb-8 text-[#FFFFFF]">
+                <div className="flex flex-col justify-center max-w-[600px]">
+                    <h5 className="text-base font-bold tracking-wide mb-8 text-[#FFFFFF]">
                         SUMMER 2020
-                    </p>
+                    </h5>
                     
-                    <h2 className="text-5xl md:text-6xl lg:text-[58px] font-bold mb-8 leading-tight text-[#FFFFFF]">
+                    <h1 className="text-[58px] font-bold mb-8 leading-tight text-[#FFFFFF]">
                         NEW COLLECTION
-                    </h2>
+                    </h1>
                     
-                    <p className="text-xl md:text-[20px] mb-10 leading-[30px] text-[#FFFFFF] max-w-[376px]">
-                        We know how large objects will act, 
-                        but things on a small scale.
-                    </p>
+                    <h4 className="text-xl mb-8 leading-[30px] text-[#FAFAFA] max-w-[376px]">
+                        We know how large objects will act, but things on a small scale.
+                    </h4>
 
-                    <a 
-                        href="/shop"
-                        className="bg-[#2DC071] text-white font-bold text-sm py-[15px] px-10 rounded-[5px] w-fit transition duration-300 hover:bg-[#24a05e] uppercase tracking-wide"
-                    >
+                    <button className="bg-[#2DC071] hover:bg-[#24a05e] text-[#FFFFFF] font-bold text-sm py-[15px] px-10 rounded-[5px] w-fit uppercase tracking-wide transition">
                         SHOP NOW
-                    </a>
+                    </button>
                 </div>
             </div>
 
             <button 
-                className="absolute left-8 top-1/2 transform -translate-y-1/2 text-white hover:bg-white/20 transition z-20 rounded-full p-2"
-                aria-label="Previous Slide"
+                className="absolute left-8 top-1/2 transform -translate-y-1/2 text-[#FFFFFF] hover:bg-white/10 transition z-20 p-2"
+                aria-label="Previous"
             >
-                <ChevronLeft size={40} strokeWidth={2.5} />
+                <ChevronLeft size={50} strokeWidth={2} className="text-[#FFFFFF]" />
             </button>
     
             <button 
-                className="absolute right-8 top-1/2 transform -translate-y-1/2 text-white hover:bg-white/20 transition z-20 rounded-full p-2"
-                aria-label="Next Slide"
+                className="absolute right-8 top-1/2 transform -translate-y-1/2 text-[#FFFFFF] hover:bg-white/10 transition z-20 p-2"
+                aria-label="Next"
             >
-                <ChevronRight size={40} strokeWidth={2.5} />
+                <ChevronRight size={50} strokeWidth={2} className="text-[#FFFFFF]" />
             </button>
             
             <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex gap-2.5 z-20">
-                <span className="h-2.5 w-16 bg-white rounded-full"></span> 
-                <span className="h-2.5 w-16 bg-white/50 rounded-full"></span>
+                <span className="h-2.5 w-16 bg-[#FFFFFF] rounded-full"></span> 
+                <span className="h-2.5 w-16 bg-[#FFFFFF] opacity-50 rounded-full"></span>
             </div>
-
         </section>
     );
 }
