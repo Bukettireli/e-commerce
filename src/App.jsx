@@ -1,25 +1,17 @@
-// src/App.jsx
-
 import React from 'react';
-// v5 için Switch ve Route kullanılıyor
 import { BrowserRouter, Switch, Route } from 'react-router-dom'; 
 
-import Layout from './components/layout/Layout'; 
-import Home from './pages/Home';
+
+import HomePage from './pages/HomePage';
+import ShopPage from './pages/ShopPage';
 
 function App() {
   return (
     <BrowserRouter> 
-        
-        <Layout>
-           
-            <Switch>
-               
-                <Route exact path="/" component={Home} /> 
-                
-              
-            </Switch>
-        </Layout>
+        <Switch>
+            <Route exact path="/" component={HomePage} /> 
+            <Route exact path="/shop" component={ShopPage} />
+        </Switch>
     </BrowserRouter>
   );
 }

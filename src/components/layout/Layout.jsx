@@ -1,20 +1,19 @@
-import React from 'react';
-import TopBar from './TopBar';   
-import Header from './Header';   
+import Header from './Header';
+import Footer from './Footer';
 
-function Layout({ children }) {
+function Layout({ children, topBar }) {
     return (
-        
-        <div className="min-h-screen flex flex-col bg-[#FAFAFA]"> 
+        <div className="min-h-screen flex flex-col bg-[#FAFAFA]">
+            {/* TopBar varsa göster */}
+            {topBar && topBar}
             
-            <TopBar />   
-            <Header />  
-      
+            <Header />
+            
             <main className="flex-grow">
-                {children} 
+                {children}
             </main>
             
-            
+            <Footer />
         </div>
     );
 }

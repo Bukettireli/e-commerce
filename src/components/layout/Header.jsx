@@ -1,16 +1,17 @@
 import { useState } from 'react';
 import { Search, ShoppingCart, User, Heart, ChevronDown } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 function Header() {
     const [shopDropdownOpen, setShopDropdownOpen] = useState(false);
 
     const navLinks = [
-        { name: 'Home', href: '#' },
-        { name: 'Shop', href: '#', hasDropdown: true },
-        { name: 'About', href: '#' },
-        { name: 'Blog', href: '#' },
-        { name: 'Contact', href: '#' },
-        { name: 'Pages', href: '#' },
+        { name: 'Home', href: '/' },
+        { name: 'Shop', href: '/shop', hasDropdown: true },
+        { name: 'About', href: '/about' },
+        { name: 'Blog', href: '/blog' },
+        { name: 'Contact', href: '/contact' },
+        { name: 'Pages', href: '/pages' },
     ];
 
     return (
@@ -19,7 +20,7 @@ function Header() {
                 <div className="flex justify-between items-center h-[58px]">
                     <div className="flex items-center gap-28">
                         <h3 className="text-2xl font-bold text-[#252B42]">
-                            Bandage
+                            <Link to="/">Bandage</Link>
                         </h3>
                         
                         <nav className="flex gap-5">
@@ -27,14 +28,15 @@ function Header() {
                                 <div key={link.name} className="relative">
                                     {link.hasDropdown ? (
                                         <>
-                                            <button 
+                                            <Link
+                                                to={link.href}
                                                 className="flex items-center gap-1 text-sm font-bold text-[#737373] hover:text-[#252B42] transition py-2"
                                                 onMouseEnter={() => setShopDropdownOpen(true)}
                                                 onMouseLeave={() => setShopDropdownOpen(false)}
                                             >
                                                 {link.name}
                                                 <ChevronDown size={16} />
-                                            </button>
+                                            </Link>
                                             {shopDropdownOpen && (
                                                 <div 
                                                     className="absolute top-full left-0 mt-2 bg-white shadow-lg border border-gray-200 rounded-md py-8 px-12 z-50"
@@ -42,7 +44,6 @@ function Header() {
                                                     onMouseLeave={() => setShopDropdownOpen(false)}
                                                 >
                                                     <div className="grid grid-cols-2 gap-x-32 gap-y-6">
-                                                        {/* Kadın Kolonu */}
                                                         <div>
                                                             <h6 className="text-base font-bold text-[#252B42] mb-6">Kadın</h6>
                                                             <div className="space-y-4">
@@ -53,7 +54,6 @@ function Header() {
                                                                 <div className="text-sm font-normal text-[#737373] hover:text-[#23A6F0] cursor-pointer">Hats</div>
                                                             </div>
                                                         </div>
-                                                        {/* Erkek Kolonu */}
                                                         <div>
                                                             <h6 className="text-base font-bold text-[#252B42] mb-6">Erkek</h6>
                                                             <div className="space-y-4">
@@ -69,12 +69,12 @@ function Header() {
                                             )}
                                         </>
                                     ) : (
-                                        <a 
-                                            href={link.href}
+                                        <Link 
+                                            to={link.href}
                                             className="text-sm font-bold text-[#737373] hover:text-[#252B42] transition py-2 inline-block"
                                         >
                                             {link.name}
-                                        </a>
+                                        </Link>
                                     )}
                                 </div>
                             ))}
