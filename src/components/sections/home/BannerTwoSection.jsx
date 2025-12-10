@@ -42,7 +42,7 @@ function BannerTwoSection() {
 
                     <div className="lg:w-1/2 flex-shrink-0 lg:order-2">
                         <img 
-                            src="/images/banner2.png" 
+                            src="/images/home/banner2.png" 
                             alt="Neural Universe Model"
                             className="
                                 hidden lg:block           
@@ -55,7 +55,7 @@ function BannerTwoSection() {
                         />
                         
                         <img 
-                            src="/images/banner2.png" 
+                            src="/images/home/banner2.png" 
                             alt="Neural Universe Model"
                             className="lg:hidden w-full h-auto object-cover" 
                         />

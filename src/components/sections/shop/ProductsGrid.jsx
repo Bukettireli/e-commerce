@@ -16,7 +16,6 @@ function ProductsGrid({ viewMode, products }) {
     );
 }
 
-// Product Card Component - Responsive
 function ProductCard({ product, viewMode }) {
     if (viewMode === 'list') {
         return (
@@ -24,9 +23,9 @@ function ProductCard({ product, viewMode }) {
                 <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full sm:w-[239px] h-[250px] sm:h-[300px] object-cover"
+                    className="sm:w-[239px] h-[250px] sm:h-[300px] object-cover"
                 />
-                <div className="flex-1 flex flex-col justify-center">
+                <div className="flex flex-col justify-center">
                     <h3 className="font-bold text-[#252B42] text-base mb-2">{product.name}</h3>
                     <p className="text-sm font-bold text-[#737373] mb-3 sm:mb-4">{product.department}</p>
                     <div className="flex items-center gap-2 mb-3 sm:mb-4">
@@ -53,7 +52,7 @@ function ProductCard({ product, viewMode }) {
                 <img
                     src={product.image}
                     alt={product.name}
-                    className="w-full h-[300px] sm:h-[427px] object-cover"
+                    className="h-[300px] sm:h-[427px] object-cover"
                 />
             </div>
             <div className="text-center px-2 sm:px-6">

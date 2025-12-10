@@ -49,7 +49,7 @@ const PostCard = ({ post }) => (
             </span>
         </div>
 
-        <div className="p-6 flex flex-col flex-grow">
+        <div className="p-6 flex flex-col grow">
             
         
             <div className="flex space-x-3 text-xs font-bold mb-3">
@@ -66,7 +66,7 @@ const PostCard = ({ post }) => (
             <h3 className="text-xl font-bold text-gray-900 mb-2">
                 {post.title}
             </h3>
-            <p className="text-sm text-gray-500 mb-4 flex-grow">
+            <p className="text-sm text-gray-500 mb-4 grow">
                 {post.description}
             </p>
 

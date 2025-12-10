@@ -80,7 +80,7 @@ function BannerSection() {
             </div>
 
             <img 
-                src="/images/banner.png" 
+                src="/images/home/banner.png" 
                 alt="Vita Classic Model"
                 className="absolute right-0 object-contain z-0"
                 style={{ width: '443px', height: '685px', top: '50%', transform: 'translateY(-50%)' }}

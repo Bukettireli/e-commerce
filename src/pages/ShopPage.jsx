@@ -16,7 +16,7 @@ function ShopPage() {
             department: 'English Department',
             price: 6.48,
             originalPrice: 16.48,
-            image: '/images/shop6.jpg',
+            image: '/images/shop/product1.jpg',
             colors: ['#23A6F0', '#2DC071', '#E77C40', '#252B42'],
         },
         {
@@ -25,7 +25,7 @@ function ShopPage() {
             department: 'English Department',
             price: 6.48,
             originalPrice: 16.48,
-            image: '/images/shop7.jpg',
+            image: '/images/shop/product2.jpg',
             colors: ['#23A6F0', '#2DC071', '#E77C40', '#252B42'],
         },
         {
@@ -34,7 +34,7 @@ function ShopPage() {
             department: 'English Department',
             price: 6.48,
             originalPrice: 16.48,
-            image: '/images/shop8.jpg',
+            image: '/images/shop/product3.jpg',
             colors: ['#23A6F0', '#2DC071', '#E77C40', '#252B42'],
         },
         {
@@ -43,7 +43,7 @@ function ShopPage() {
             department: 'English Department',
             price: 6.48,
             originalPrice: 16.48,
-            image: '/images/shop9.jpg',
+            image: '/images/shop/product4.jpg',
             colors: ['#23A6F0', '#2DC071', '#E77C40', '#252B42'],
         },
         {
@@ -52,7 +52,7 @@ function ShopPage() {
             department: 'English Department',
             price: 6.48,
             originalPrice: 16.48,
-            image: '/images/shop10.jpg',
+            image: '/images/shop/product5.jpg',
             colors: ['#23A6F0', '#2DC071', '#E77C40', '#252B42'],
         },
         {
@@ -61,7 +61,7 @@ function ShopPage() {
             department: 'English Department',
             price: 6.48,
             originalPrice: 16.48,
-            image: '/images/shop11.jpg',
+            image: '/images/shop/product6.jpg',
             colors: ['#23A6F0', '#2DC071', '#E77C40', '#252B42'],
         },
         {
@@ -70,7 +70,7 @@ function ShopPage() {
             department: 'English Department',
             price: 6.48,
             originalPrice: 16.48,
-            image: '/images/shop12.jpg',
+            image: '/images/shop/product7.jpg',
             colors: ['#23A6F0', '#2DC071', '#E77C40', '#252B42'],
         },
         {
@@ -79,9 +79,46 @@ function ShopPage() {
             department: 'English Department',
             price: 6.48,
             originalPrice: 16.48,
-            image: '/images/shop13.jpg',
+            image: '/images/shop/product8.jpg',
             colors: ['#23A6F0', '#2DC071', '#E77C40', '#252B42'],
         },
+        {
+            id: 9,
+            name: 'Graphic Design',
+            department: 'English Department',
+            price: 6.48,
+            originalPrice: 16.48,
+            image: '/images/shop/product9.jpg',
+            colors: ['#23A6F0', '#2DC071', '#E77C40', '#252B42'],
+        },
+         {
+            id: 10,
+            name: 'Graphic Design',
+            department: 'English Department',
+            price: 6.48,
+            originalPrice: 16.48,
+            image: '/images/shop/product10.jpg',
+            colors: ['#23A6F0', '#2DC071', '#E77C40', '#252B42'],
+        },
+        {
+            id: 11,
+            name: 'Graphic Design',
+            department: 'English Department',
+            price: 6.48,
+            originalPrice: 16.48,
+            image: '/images/shop/product11.jpg',
+            colors: ['#23A6F0', '#2DC071', '#E77C40', '#252B42'],
+        },
+        {
+            id: 12,
+            name: 'Graphic Design',
+            department: 'English Department',
+            price: 6.48,
+            originalPrice: 16.48,
+            image: '/images/shop/product12.jpg',
+            colors: ['#23A6F0', '#2DC071', '#E77C40', '#252B42'],
+        },
+
     ];
 
     return (
