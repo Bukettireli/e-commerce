@@ -48,7 +48,7 @@ function EditorPickSection() {
           </div>
 
           <div className="relative h-[300px] lg:h-[242px] overflow-hidden">
-            <img src= "/images/home/kidss.jpg" 
+            <img src= "/images/home/kids.jpg" 
             alt="kids" 
             className="w-full h-full object-cover object-[center_10%]" />
             <button className="absolute bottom-5 left-5 bg-white px-4 py-2 text-[#252B42] shadow font-semibold">

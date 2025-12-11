@@ -5,121 +5,11 @@ import ShopHero from '../components/sections/shop/ShopHero';
 import ShopFilter from '../components/sections/shop/ShopFilter';
 import ProductsGrid from '../components/sections/shop/ProductsGrid';
 import ShopPagination from '../components/sections/shop/ShopPagination';
+import ShopBrands from '../components/sections/shop/ShopBrands';
+import { products } from '../data/products';
 
 function ShopPage() {
     const [viewMode, setViewMode] = useState('grid');
-
-    const products = [
-        {
-            id: 1,
-            name: 'Graphic Design',
-            department: 'English Department',
-            price: 6.48,
-            originalPrice: 16.48,
-            image: '/images/shop/product1.jpg',
-            colors: ['#23A6F0', '#2DC071', '#E77C40', '#252B42'],
-        },
-        {
-            id: 2,
-            name: 'Graphic Design',
-            department: 'English Department',
-            price: 6.48,
-            originalPrice: 16.48,
-            image: '/images/shop/product2.jpg',
-            colors: ['#23A6F0', '#2DC071', '#E77C40', '#252B42'],
-        },
-        {
-            id: 3,
-            name: 'Graphic Design',
-            department: 'English Department',
-            price: 6.48,
-            originalPrice: 16.48,
-            image: '/images/shop/product3.jpg',
-            colors: ['#23A6F0', '#2DC071', '#E77C40', '#252B42'],
-        },
-        {
-            id: 4,
-            name: 'Graphic Design',
-            department: 'English Department',
-            price: 6.48,
-            originalPrice: 16.48,
-            image: '/images/shop/product4.jpg',
-            colors: ['#23A6F0', '#2DC071', '#E77C40', '#252B42'],
-        },
-        {
-            id: 5,
-            name: 'Graphic Design',
-            department: 'English Department',
-            price: 6.48,
-            originalPrice: 16.48,
-            image: '/images/shop/product5.jpg',
-            colors: ['#23A6F0', '#2DC071', '#E77C40', '#252B42'],
-        },
-        {
-            id: 6,
-            name: 'Graphic Design',
-            department: 'English Department',
-            price: 6.48,
-            originalPrice: 16.48,
-            image: '/images/shop/product6.jpg',
-            colors: ['#23A6F0', '#2DC071', '#E77C40', '#252B42'],
-        },
-        {
-            id: 7,
-            name: 'Graphic Design',
-            department: 'English Department',
-            price: 6.48,
-            originalPrice: 16.48,
-            image: '/images/shop/product7.jpg',
-            colors: ['#23A6F0', '#2DC071', '#E77C40', '#252B42'],
-        },
-        {
-            id: 8,
-            name: 'Graphic Design',
-            department: 'English Department',
-            price: 6.48,
-            originalPrice: 16.48,
-            image: '/images/shop/product8.jpg',
-            colors: ['#23A6F0', '#2DC071', '#E77C40', '#252B42'],
-        },
-        {
-            id: 9,
-            name: 'Graphic Design',
-            department: 'English Department',
-            price: 6.48,
-            originalPrice: 16.48,
-            image: '/images/shop/product9.jpg',
-            colors: ['#23A6F0', '#2DC071', '#E77C40', '#252B42'],
-        },
-         {
-            id: 10,
-            name: 'Graphic Design',
-            department: 'English Department',
-            price: 6.48,
-            originalPrice: 16.48,
-            image: '/images/shop/product10.jpg',
-            colors: ['#23A6F0', '#2DC071', '#E77C40', '#252B42'],
-        },
-        {
-            id: 11,
-            name: 'Graphic Design',
-            department: 'English Department',
-            price: 6.48,
-            originalPrice: 16.48,
-            image: '/images/shop/product11.jpg',
-            colors: ['#23A6F0', '#2DC071', '#E77C40', '#252B42'],
-        },
-        {
-            id: 12,
-            name: 'Graphic Design',
-            department: 'English Department',
-            price: 6.48,
-            originalPrice: 16.48,
-            image: '/images/shop/product12.jpg',
-            colors: ['#23A6F0', '#2DC071', '#E77C40', '#252B42'],
-        },
-
-    ];
 
     return (
         <Layout topBar={<ShopTopBar />}>
@@ -127,6 +17,7 @@ function ShopPage() {
             <ShopFilter viewMode={viewMode} setViewMode={setViewMode} />
             <ProductsGrid viewMode={viewMode} products={products} />
             <ShopPagination />
+            <ShopBrands/>
         </Layout>
     );
 }

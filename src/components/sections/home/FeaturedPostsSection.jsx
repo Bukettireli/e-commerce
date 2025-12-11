@@ -100,7 +100,7 @@ function FeaturedPostsSection() {
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
                 <div className="text-center mb-16">
-                    <p className="text-sm font-bold text-[#2DC071] mb-2">
+                    <p className="text-sm font-bold text-[#23A6F0] mb-2">
                         Practice Advice
                     </p>
                     <h2 className="text-4xl font-bold text-gray-800 mb-3">
