@@ -1,9 +1,22 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Search, ShoppingCart, User, Heart, ChevronDown } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 function Header() {
     const [shopDropdownOpen, setShopDropdownOpen] = useState(false);
+    const dropdownRef = useRef(null);
+
+    // Dışarı tıklanınca kapat
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setShopDropdownOpen(false);
+            }
+        };
+
+        document.addEventListener('mousedown', handleClickOutside);
+        return () => document.removeEventListener('mousedown', handleClickOutside);
+    }, []);
 
     const navLinks = [
         { name: 'Home', href: '/' },
@@ -25,43 +38,108 @@ function Header() {
                         
                         <nav className="flex gap-5">
                             {navLinks.map((link) => (
-                                <div key={link.name} className="relative">
+                                <div key={link.name} className="relative" ref={link.hasDropdown ? dropdownRef : null}>
                                     {link.hasDropdown ? (
                                         <>
-                                            <Link
-                                                to={link.href}
-                                                className="flex items-center gap-1 text-sm font-bold text-[#737373] hover:text-[#252B42] transition py-2"
-                                                onMouseEnter={() => setShopDropdownOpen(true)}
-                                                onMouseLeave={() => setShopDropdownOpen(false)}
-                                            >
-                                                {link.name}
-                                                <ChevronDown size={16} />
-                                            </Link>
-                                            {shopDropdownOpen && (
-                                                <div 
-                                                    className="absolute top-full left-0 mt-2 bg-white shadow-lg border border-gray-200 rounded-md py-8 px-12 z-50"
-                                                    onMouseEnter={() => setShopDropdownOpen(true)}
-                                                    onMouseLeave={() => setShopDropdownOpen(false)}
+                                            <div className="flex items-center gap-1">
+                                                <Link
+                                                    to={link.href}
+                                                    className="text-sm font-bold text-[#737373] hover:text-[#252B42] transition py-2"
                                                 >
-                                                    <div className="grid grid-cols-2 gap-x-32 gap-y-6">
+                                                    {link.name}
+                                                </Link>
+                                                <button
+                                                    onClick={() => setShopDropdownOpen(!shopDropdownOpen)}
+                                                    className="text-[#737373] hover:text-[#252B42] transition py-2"
+                                                >
+                                                    <ChevronDown 
+                                                        size={16} 
+                                                        className={`transition-transform duration-200 ${shopDropdownOpen ? 'rotate-180' : ''}`}
+                                                    />
+                                                </button>
+                                            </div>
+                                            
+                                            {shopDropdownOpen && (
+                                                <div className="absolute top-full left-0 mt-2 bg-white shadow-lg border border-gray-200 rounded-md py-6 z-50 min-w-[400px]">
+                                                    <div className="grid grid-cols-2 gap-8 px-8">
                                                         <div>
-                                                            <h6 className="text-base font-bold text-[#252B42] mb-6">Kadın</h6>
-                                                            <div className="space-y-4">
-                                                                <div className="text-sm font-normal text-[#737373] hover:text-[#23A6F0] cursor-pointer">Bags</div>
-                                                                <div className="text-sm font-normal text-[#737373] hover:text-[#23A6F0] cursor-pointer">Belts</div>
-                                                                <div className="text-sm font-normal text-[#737373] hover:text-[#23A6F0] cursor-pointer">Cosmetics</div>
-                                                                <div className="text-sm font-normal text-[#737373] hover:text-[#23A6F0] cursor-pointer">Bags</div>
-                                                                <div className="text-sm font-normal text-[#737373] hover:text-[#23A6F0] cursor-pointer">Hats</div>
+                                                            <h6 className="text-base font-bold text-[#252B42] mb-4">Kadın</h6>
+                                                            <div className="space-y-3">
+                                                                <Link 
+                                                                    to="/shop" 
+                                                                    className="block text-sm text-[#737373] hover:text-[#23A6F0]"
+                                                                    onClick={() => setShopDropdownOpen(false)}
+                                                                >
+                                                                    Bags
+                                                                </Link>
+                                                                <Link 
+                                                                    to="/shop" 
+                                                                    className="block text-sm text-[#737373] hover:text-[#23A6F0]"
+                                                                    onClick={() => setShopDropdownOpen(false)}
+                                                                >
+                                                                    Belts
+                                                                </Link>
+                                                                <Link 
+                                                                    to="/shop" 
+                                                                    className="block text-sm text-[#737373] hover:text-[#23A6F0]"
+                                                                    onClick={() => setShopDropdownOpen(false)}
+                                                                >
+                                                                    Cosmetics
+                                                                </Link>
+                                                                <Link 
+                                                                    to="/shop" 
+                                                                    className="block text-sm text-[#737373] hover:text-[#23A6F0]"
+                                                                    onClick={() => setShopDropdownOpen(false)}
+                                                                >
+                                                                    Bags
+                                                                </Link>
+                                                                <Link 
+                                                                    to="/shop" 
+                                                                    className="block text-sm text-[#737373] hover:text-[#23A6F0]"
+                                                                    onClick={() => setShopDropdownOpen(false)}
+                                                                >
+                                                                    Hats
+                                                                </Link>
                                                             </div>
                                                         </div>
                                                         <div>
-                                                            <h6 className="text-base font-bold text-[#252B42] mb-6">Erkek</h6>
-                                                            <div className="space-y-4">
-                                                                <div className="text-sm font-normal text-[#737373] hover:text-[#23A6F0] cursor-pointer">Bags</div>
-                                                                <div className="text-sm font-normal text-[#737373] hover:text-[#23A6F0] cursor-pointer">Belts</div>
-                                                                <div className="text-sm font-normal text-[#737373] hover:text-[#23A6F0] cursor-pointer">Cosmetics</div>
-                                                                <div className="text-sm font-normal text-[#737373] hover:text-[#23A6F0] cursor-pointer">Bags</div>
-                                                                <div className="text-sm font-normal text-[#737373] hover:text-[#23A6F0] cursor-pointer">Hats</div>
+                                                            <h6 className="text-base font-bold text-[#252B42] mb-4">Erkek</h6>
+                                                            <div className="space-y-3">
+                                                                <Link 
+                                                                    to="/shop" 
+                                                                    className="block text-sm text-[#737373] hover:text-[#23A6F0]"
+                                                                    onClick={() => setShopDropdownOpen(false)}
+                                                                >
+                                                                    Bags
+                                                                </Link>
+                                                                <Link 
+                                                                    to="/shop" 
+                                                                    className="block text-sm text-[#737373] hover:text-[#23A6F0]"
+                                                                    onClick={() => setShopDropdownOpen(false)}
+                                                                >
+                                                                    Belts
+                                                                </Link>
+                                                                <Link 
+                                                                    to="/shop" 
+                                                                    className="block text-sm text-[#737373] hover:text-[#23A6F0]"
+                                                                    onClick={() => setShopDropdownOpen(false)}
+                                                                >
+                                                                    Cosmetics
+                                                                </Link>
+                                                                <Link 
+                                                                    to="/shop" 
+                                                                    className="block text-sm text-[#737373] hover:text-[#23A6F0]"
+                                                                    onClick={() => setShopDropdownOpen(false)}
+                                                                >
+                                                                    Bags
+                                                                </Link>
+                                                                <Link 
+                                                                    to="/shop" 
+                                                                    className="block text-sm text-[#737373] hover:text-[#23A6F0]"
+                                                                    onClick={() => setShopDropdownOpen(false)}
+                                                                >
+                                                                    Hats
+                                                                </Link>
                                                             </div>
                                                         </div>
                                                     </div>

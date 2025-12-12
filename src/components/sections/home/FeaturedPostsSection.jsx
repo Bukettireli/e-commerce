@@ -3,7 +3,7 @@ import React from 'react';
 const postData = [
     {
         id: 1,
-        imgSrc: '/images/post1.jpg', 
+        imgSrc: '/images/home/post1.jpg', 
         tag: 'NEW',
         badges: ['Google', 'Trending', 'New'],
         title: 'Loudest à la Madison #1 (L\'Integral)',
@@ -13,7 +13,7 @@ const postData = [
     },
     {
         id: 2,
-        imgSrc: '/images/post2.jpg', 
+        imgSrc: '/images/home/post2.jpg', 
         tag: 'NEW',
         badges: ['Google', 'Trending', 'New'],
         title: 'Loudest à la Madison #1 (L\'Integral)',
@@ -23,7 +23,7 @@ const postData = [
     },
     {
         id: 3,
-        imgSrc: '/images/post3.jpg', 
+        imgSrc: '/images/home/post3.jpg', 
         tag: 'NEW',
         badges: ['Google', 'Trending', 'New'],
         title: 'Loudest à la Madison #1 (L\'Integral)',

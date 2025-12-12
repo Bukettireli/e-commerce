@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom';
 import { FaStar, FaRegStar, FaHeart, FaShoppingCart, FaEye, FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import Layout from '../components/layout/Layout';
 import ShopTopBar from '../components/sections/shop/ShopTopBar';
+import ProductTabs from '../components/sections/product/ProductTabs';
 import { products } from '../data/products';
+import BestsellerProducts from '../components/sections/product/BestsellerProducts';
+import ShopBrands from '../components/sections/shop/ShopBrands';
 
 function ProductDetailPage(props) {
   const id = parseInt(props.match.params.id);
@@ -189,6 +192,11 @@ function ProductDetailPage(props) {
           </div>
         </div>
       </div>
+
+      {/* Tabs Section */}
+      <ProductTabs product={product} />
+      <BestsellerProducts />
+      <ShopBrands />
     </Layout>
   );
 }

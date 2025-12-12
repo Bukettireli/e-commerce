@@ -11,7 +11,10 @@ export const products = [
         reviews: 10,
         availability: 'In Stock',
         description: 'Met minim Mollie non desert Alamo est sit cliquey dolor do met sent. RELIT official consequent door ENIM RELIT Mollie. Excitation venial consequent sent nostrum met.',
-        images: ['/images/shop/product1.jpg'],
+        images: [
+            '/images/shop/product1.jpg',
+            '/images/shop/product1.jpg',
+        ],
     },
     {
         id: 2,
@@ -25,7 +28,10 @@ export const products = [
         reviews: 10,
         availability: 'In Stock',
         description: 'Met minim Mollie non desert Alamo est sit cliquey dolor do met sent. RELIT official consequent door ENIM RELIT Mollie. Excitation venial consequent sent nostrum met.',
-        images: ['/images/shop/product2.jpg'],
+        images: [
+            '/images/shop/product2.jpg',
+            '/images/shop/product2.jpg',
+        ],
     },
     {
         id: 3,
@@ -39,7 +45,10 @@ export const products = [
         reviews: 10,
         availability: 'In Stock',
         description: 'Met minim Mollie non desert Alamo est sit cliquey dolor do met sent. RELIT official consequent door ENIM RELIT Mollie. Excitation venial consequent sent nostrum met.',
-        images: ['/images/shop/product3.jpg'],
+        images: [
+            '/images/shop/product3.jpg',
+            '/images/shop/product3.jpg',
+        ],
     },
     {
         id: 4,
@@ -53,7 +62,10 @@ export const products = [
         reviews: 10,
         availability: 'In Stock',
         description: 'Met minim Mollie non desert Alamo est sit cliquey dolor do met sent. RELIT official consequent door ENIM RELIT Mollie. Excitation venial consequent sent nostrum met.',
-        images: ['/images/shop/product4.jpg'],
+        images: [
+            '/images/shop/product4.jpg',
+            '/images/shop/product4.jpg',
+        ],
     },
     {
         id: 5,
@@ -67,7 +79,10 @@ export const products = [
         reviews: 10,
         availability: 'In Stock',
         description: 'Met minim Mollie non desert Alamo est sit cliquey dolor do met sent. RELIT official consequent door ENIM RELIT Mollie. Excitation venial consequent sent nostrum met.',
-        images: ['/images/shop/product5.jpg'],
+        images: [
+            '/images/shop/product5.jpg',
+            '/images/shop/product5.jpg',
+        ],
     },
     {
         id: 6,
@@ -81,7 +96,10 @@ export const products = [
         reviews: 10,
         availability: 'In Stock',
         description: 'Met minim Mollie non desert Alamo est sit cliquey dolor do met sent. RELIT official consequent door ENIM RELIT Mollie. Excitation venial consequent sent nostrum met.',
-        images: ['/images/shop/product6.jpg'],
+        images: [
+            '/images/shop/product6.jpg',
+            '/images/shop/product6.jpg',
+        ],
     },
     {
         id: 7,
@@ -95,7 +113,10 @@ export const products = [
         reviews: 10,
         availability: 'In Stock',
         description: 'Met minim Mollie non desert Alamo est sit cliquey dolor do met sent. RELIT official consequent door ENIM RELIT Mollie. Excitation venial consequent sent nostrum met.',
-        images: ['/images/shop/product7.jpg'],
+        images: [
+            '/images/shop/product7.jpg',
+            '/images/shop/product7.jpg',
+        ],
     },
     {
         id: 8,
@@ -109,7 +130,10 @@ export const products = [
         reviews: 10,
         availability: 'In Stock',
         description: 'Met minim Mollie non desert Alamo est sit cliquey dolor do met sent. RELIT official consequent door ENIM RELIT Mollie. Excitation venial consequent sent nostrum met.',
-        images: ['/images/shop/product8.jpg'],
+        images: [
+            '/images/shop/product8.jpg',
+            '/images/shop/product8.jpg',
+        ],
     },
     {
         id: 9,
@@ -123,7 +147,10 @@ export const products = [
         reviews: 10,
         availability: 'In Stock',
         description: 'Met minim Mollie non desert Alamo est sit cliquey dolor do met sent. RELIT official consequent door ENIM RELIT Mollie. Excitation venial consequent sent nostrum met.',
-        images: ['/images/shop/product9.jpg'],
+        images: [
+            '/images/shop/product9.jpg',
+            '/images/shop/product9.jpg',
+        ],
     },
     {
         id: 10,
@@ -137,7 +164,10 @@ export const products = [
         reviews: 10,
         availability: 'In Stock',
         description: 'Met minim Mollie non desert Alamo est sit cliquey dolor do met sent. RELIT official consequent door ENIM RELIT Mollie. Excitation venial consequent sent nostrum met.',
-        images: ['/images/shop/product10.jpg'],
+        images: [
+            '/images/shop/product10.jpg',
+            '/images/shop/product10.jpg',
+        ],
     },
     {
         id: 11,
@@ -151,7 +181,10 @@ export const products = [
         reviews: 10,
         availability: 'In Stock',
         description: 'Met minim Mollie non desert Alamo est sit cliquey dolor do met sent. RELIT official consequent door ENIM RELIT Mollie. Excitation venial consequent sent nostrum met.',
-        images: ['/images/shop/product11.jpg'],
+        images: [
+            '/images/shop/product11.jpg',
+            '/images/shop/product11.jpg',
+        ],
     },
     {
         id: 12,
@@ -165,6 +198,9 @@ export const products = [
         reviews: 10,
         availability: 'In Stock',
         description: 'Met minim Mollie non desert Alamo est sit cliquey dolor do met sent. RELIT official consequent door ENIM RELIT Mollie. Excitation venial consequent sent nostrum met.',
-        images: ['/images/shop/product12.jpg'],
+        images: [
+            '/images/shop/product12.jpg',
+            '/images/shop/product12.jpg',
+        ],
     },
 ];
