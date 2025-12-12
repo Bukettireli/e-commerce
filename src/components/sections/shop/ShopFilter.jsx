@@ -6,15 +6,15 @@ function ShopFilter({ viewMode, setViewMode }) {
             <div className="max-w-7xl mx-auto px-4 sm:px-6">
                 <div className="flex items-center justify-between">
                    
-                    {/* Sol - Results */}
+                    
                     <p className="text-sm font-bold text-[#737373]">
                         Showing all 12 results
                     </p>
 
-                    {/* Sağ - Views, Sort, Filter */}
+                    
                     <div className="flex items-center gap-16">
                         
-                        {/* Views */}
+                      
                         <div className="flex items-center gap-2">
                             <span className="text-sm font-bold text-[#737373]">Views:</span>
                             <div className="flex items-center gap-2">
@@ -41,7 +41,7 @@ function ShopFilter({ viewMode, setViewMode }) {
                             </div>
                         </div>
 
-                        {/* Sort & Filter */}
+                       
                         <div className="flex items-center gap-3">
                             <select className="border border-[#DDDDDD] rounded px-5 py-2.5 text-sm text-[#737373] bg-[#F9F9F9] min-w-[180px]">
                                 <option>Popularity</option>

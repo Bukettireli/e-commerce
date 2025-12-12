@@ -1,5 +1,4 @@
-import { Facebook, Instagram, Twitter, Youtube, Phone, Mail } from "lucide-react";
-
+import { Phone, Mail, Instagram, Youtube, Facebook, Twitter } from "lucide-react";
 
 function TopBar() {
   return (

@@ -14,7 +14,7 @@ function ProductTabs({ product }) {
         <section className="w-full py-12 bg-white font-montserrat">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
-                {/* Tabs Navigation */}
+                
                 <div className="flex justify-center border-b border-[#ECECEC] mb-12">
                     {tabs.map((tab) => (
                         <button
@@ -31,10 +31,10 @@ function ProductTabs({ product }) {
                     ))}
                 </div>
 
-                {/* Tab Content */}
+                
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                     
-                    {/* Left - Image */}
+                    
                     <div className="lg:col-span-1">
                         <img 
                             src={product.image}
@@ -43,7 +43,7 @@ function ProductTabs({ product }) {
                         />
                     </div>
 
-                    {/* Middle - Description */}
+                    
                     <div className="lg:col-span-1">
                         <h3 className="text-2xl font-bold text-[#252B42] mb-6">
                             the quick fox jumps over
@@ -62,10 +62,10 @@ function ProductTabs({ product }) {
                         </div>
                     </div>
 
-                    {/* Right - Features */}
+                    
                     <div className="lg:col-span-1 space-y-8">
                         
-                        {/* First List */}
+                    
                         <div>
                             <h3 className="text-2xl font-bold text-[#252B42] mb-6">
                                 the quick fox jumps over
@@ -80,7 +80,7 @@ function ProductTabs({ product }) {
                             </ul>
                         </div>
 
-                        {/* Second List */}
+                        
                         <div>
                             <h3 className="text-2xl font-bold text-[#252B42] mb-6">
                                 the quick fox jumps over
