@@ -13,10 +13,10 @@ function ProductDetailPage(props) {
   const [selectedImage, setSelectedImage] = useState(0);
   const [selectedColor, setSelectedColor] = useState(0);
 
-  // ID'ye göre ürünü bul
+  
   const product = products.find(p => p.id === id);
 
-  // Ürün bulunamadıysa
+  
   if (!product) {
     return (
       <Layout topBar={<ShopTopBar />}>
@@ -30,7 +30,7 @@ function ProductDetailPage(props) {
     );
   }
 
-  // Renkleri obje formatına çevir
+  
   const colorObjects = product.colors.map((hex, index) => ({
     name: `Color ${index + 1}`,
     hex: hex
@@ -39,7 +39,7 @@ function ProductDetailPage(props) {
   return (
     <Layout topBar={<ShopTopBar />}>
       <div className="font-montserrat bg-white">
-        {/* Breadcrumb */}
+        
         <div className="bg-[#FAFAFA] py-6">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center gap-3 text-sm font-bold">
@@ -50,13 +50,13 @@ function ProductDetailPage(props) {
           </div>
         </div>
 
-        {/* Product Section */}
+        
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 lg:py-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16">
             
-            {/* Left - Images */}
+         
             <div className="flex flex-col gap-5">
-              {/* Main Image */}
+          
               <div className="relative bg-[#F5F5F5] rounded-lg overflow-hidden aspect-square">
                 <img 
                   src={product.images[selectedImage]} 
@@ -64,7 +64,7 @@ function ProductDetailPage(props) {
                   className="w-full h-full object-cover"
                 />
                 
-                {/* Navigation Arrows - Only show if multiple images */}
+                
                 {product.images.length > 1 && (
                   <>
                     <button 
@@ -85,7 +85,7 @@ function ProductDetailPage(props) {
                 )}
               </div>
 
-              {/* Thumbnail Images */}
+             
               {product.images.length > 1 && (
                 <div className="flex gap-4">
                   {product.images.map((image, index) => (
@@ -108,12 +108,12 @@ function ProductDetailPage(props) {
               )}
             </div>
 
-            {/* Right - Product Info */}
+         
             <div className="flex flex-col gap-4 lg:gap-5">
-              {/* Title */}
+              
               <h1 className="text-[#252B42] text-xl lg:text-2xl font-normal">{product.name}</h1>
 
-              {/* Rating & Reviews */}
+              
               <div className="flex items-center gap-3">
                 <div className="flex gap-1">
                   {[...Array(5)].map((_, i) => (
@@ -125,7 +125,7 @@ function ProductDetailPage(props) {
                 <span className="text-[#737373] text-sm font-bold">{product.reviews} Reviews</span>
               </div>
 
-              {/* Price */}
+              
               <div className="flex items-center gap-2">
                 <span className="text-[#252B42] text-2xl font-bold">${product.price.toFixed(2)}</span>
                 <span className="text-[#BDBDBD] text-xl font-bold line-through">
@@ -133,18 +133,18 @@ function ProductDetailPage(props) {
                 </span>
               </div>
 
-              {/* Availability */}
+          
               <div className="flex items-center gap-2">
                 <span className="text-[#737373] text-sm font-bold">Availability :</span>
                 <span className="text-[#23A6F0] text-sm font-bold">{product.availability}</span>
               </div>
 
-              {/* Description */}
+           
               <p className="text-[#858585] text-sm leading-6 border-b border-[#BDBDBD] pb-6 lg:pb-7">
                 {product.description}
               </p>
 
-              {/* Colors */}
+        
               <div className="flex items-center gap-3 border-b border-[#BDBDBD] pb-6 lg:pb-7">
                 {colorObjects.map((color, index) => (
                   <button
@@ -160,7 +160,7 @@ function ProductDetailPage(props) {
                 ))}
               </div>
 
-              {/* Actions */}
+              
               <div className="flex flex-wrap items-center gap-3">
                 <button className="bg-[#23A6F0] text-white px-5 py-2.5 rounded-[5px] text-sm font-bold hover:bg-[#1a8cd8] transition">
                   Select Options
@@ -193,7 +193,7 @@ function ProductDetailPage(props) {
         </div>
       </div>
 
-      {/* Tabs Section */}
+      
       <ProductTabs product={product} />
       <BestsellerProducts />
       <ShopBrands />

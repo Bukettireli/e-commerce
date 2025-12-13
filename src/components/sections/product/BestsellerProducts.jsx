@@ -2,22 +2,22 @@ import { Link } from 'react-router-dom';
 import { products } from '../../../data/products';
 
 function BestsellerProducts() {
-    // İlk 8 ürünü göster
+    
     const bestsellerProducts = products.slice(0, 8);
 
     return (
         <section className="w-full py-12 bg-[#FAFAFA] font-montserrat">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 
-                {/* Title */}
+                
                 <h2 className="text-2xl font-bold text-[#252B42] mb-8">
                     BESTSELLER PRODUCTS
                 </h2>
 
-                {/* Divider */}
+            
                 <div className="border-b border-[#ECECEC] mb-8"></div>
 
-                {/* Products Grid */}
+
                 <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {bestsellerProducts.map((product) => (
                         <Link 
@@ -26,7 +26,7 @@ function BestsellerProducts() {
                             className="group"
                         >
                             <div className="flex flex-col">
-                                {/* Image */}
+                                
                                 <div className="relative overflow-hidden mb-4 bg-[#F5F5F5] aspect-square">
                                     <img 
                                         src={product.image} 
@@ -35,7 +35,7 @@ function BestsellerProducts() {
                                     />
                                 </div>
 
-                                {/* Product Info */}
+                            
                                 <div className="text-center">
                                     <h3 className="text-base font-bold text-[#252B42] mb-2 group-hover:text-[#23A6F0] transition">
                                         {product.name}

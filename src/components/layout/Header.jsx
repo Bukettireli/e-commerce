@@ -6,7 +6,7 @@ function Header() {
     const [shopDropdownOpen, setShopDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
 
-    // Dışarı tıklanınca kapat
+    
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {

@@ -22,7 +22,7 @@ function BannerSection() {
             >
             
                 <div 
-                    className="flex flex-col justify-center text-[#FFFFFF] flex-shrink-0"
+                    className="flex flex-col justify-center text-[#FFFFFF] shrink-0"
                     style={{ 
                         width: '509px', 
                         height: '432px', 
