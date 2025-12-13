@@ -78,6 +78,15 @@ function AboutTeam() {
                     ))}
                 </div>
 
+                {/* View All Button */}
+                <div className="text-center">
+                    <Link to="/team">
+                        <button className="bg-[#23A6F0] text-white px-10 py-3 rounded-[5px] text-sm font-bold hover:bg-[#1a8cd8] transition">
+                            View All Team Members
+                        </button>
+                    </Link>
+                </div>
+
             </div>
         </section>
     );
