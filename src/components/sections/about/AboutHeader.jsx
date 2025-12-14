@@ -40,10 +40,12 @@ function AboutHeader() {
                             Login
                         </Link>
 
-                        <button className="bg-[#23A6F0] text-white px-6 py-3 rounded-[5px] text-sm font-bold hover:bg-[#1a8cd8] transition flex items-center gap-2">
-                            Become a member
-                            <span>→</span>
-                        </button>
+                        <Link to="/signup">
+                            <button className="bg-[#23A6F0] text-white px-6 py-3 rounded-[5px] text-sm font-bold hover:bg-[#1a8cd8] transition flex items-center gap-2">
+                                Become a member
+                                <span>→</span>
+                            </button>
+                        </Link>
                     </div>
                 </div>
             </div>

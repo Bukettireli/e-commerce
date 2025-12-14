@@ -7,6 +7,7 @@ import ProductDetailPage from './pages/ProductDetailPage';
 import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import TeamPage from './pages/TeamPage';
+import SignupPage from './pages/SignupPage';
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
             <Route exact path="/about" component={AboutPage} />
              <Route exact path="/contact" component={ContactPage} />
              <Route exact path="/team" component={TeamPage} />
+             <Route exact path="/signup" component={SignupPage} />
         </Switch>
     </BrowserRouter>
   );

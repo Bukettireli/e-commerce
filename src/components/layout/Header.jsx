@@ -160,9 +160,15 @@ function Header() {
                     </div>
 
                     <div className="flex items-center gap-8">
-                        <div className="flex items-center text-sm font-bold text-[#23A6F0] cursor-pointer">
-                            <User size={12} className="mr-1" />
-                            <span>Login / Register</span>
+                        <div className="flex items-center gap-1 text-sm font-bold text-[#23A6F0]">
+                            <User size={12} />
+                            <Link to="/login" className="hover:text-[#1a8cd8] transition">
+                                Login
+                            </Link>
+                            <span>/</span>
+                            <Link to="/signup" className="hover:text-[#1a8cd8] transition">
+                                Register
+                            </Link>
                         </div>
 
                         <div className="flex items-center gap-5">
