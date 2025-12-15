@@ -1,14 +1,19 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useHistory } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
+import { fetchRoles, setUser } from '../../../actions/clientActions';
 import axiosInstance from '../../../api/axiosInstance';
 import { Loader2 } from 'lucide-react';
 
 function SignupForm() {
-    const [roles, setRoles] = useState([]);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState('');
+    const dispatch = useDispatch();
     const history = useHistory();
+    
+   
+    const roles = useSelector((state) => state.client.roles);
+    const [loading, setLoading] = React.useState(false);
+    const [error, setError] = React.useState('');
 
     const {
         register,
@@ -24,24 +29,16 @@ function SignupForm() {
     const selectedRole = watch('role_id');
     const password = watch('password');
 
-   
+    
     useEffect(() => {
-        axiosInstance.get('/roles')
-            .then(response => {
-                console.log('Roles:', response.data);
-                setRoles(response.data);
-            })
-            .catch(err => {
-                console.error('Roles fetch error:', err);
-            });
-    }, []);
+        dispatch(fetchRoles());
+    }, [dispatch]);
 
     const onSubmit = async (data) => {
         setLoading(true);
         setError('');
 
         try {
-            
             const formData = {
                 name: data.name,
                 email: data.email,
@@ -49,7 +46,6 @@ function SignupForm() {
                 role_id: data.role_id
             };
 
-           
             const storeRole = roles.find(role => role.code === 'store');
             if (storeRole && data.role_id === storeRole.id.toString()) {
                 formData.store = {
@@ -60,9 +56,15 @@ function SignupForm() {
                 };
             }
 
-            await axiosInstance.post('/signup', formData);
+            const response = await axiosInstance.post('/signup', formData);
 
-           
+            
+            dispatch(setUser({
+                name: data.name,
+                email: data.email,
+                role_id: data.role_id
+            }));
+
             alert('You need to click link in email to activate your account!');
             setTimeout(() => {
                 history.push('/');
@@ -76,20 +78,18 @@ function SignupForm() {
     };
 
     console.log('Selected Role:', selectedRole);
-    console.log('All Roles:', roles);
+    console.log('All Roles from Redux:', roles);
 
     return (
         <div className="bg-white rounded-lg shadow-xl p-8">
             <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
 
-               
                 {error && (
                     <div className="bg-red-50 border border-red-200 text-red-600 px-4 py-3 rounded">
                         {error}
                     </div>
                 )}
 
-                
                 <div>
                     <label className="block text-sm font-bold text-[#252B42] mb-2">
                         Name *
@@ -111,7 +111,6 @@ function SignupForm() {
                     )}
                 </div>
 
-               
                 <div>
                     <label className="block text-sm font-bold text-[#252B42] mb-2">
                         Email *
@@ -133,7 +132,6 @@ function SignupForm() {
                     )}
                 </div>
 
-                
                 <div>
                     <label className="block text-sm font-bold text-[#252B42] mb-2">
                         Password *
@@ -162,7 +160,6 @@ function SignupForm() {
                     </p>
                 </div>
 
-               
                 <div>
                     <label className="block text-sm font-bold text-[#252B42] mb-2">
                         Confirm Password *
@@ -181,7 +178,6 @@ function SignupForm() {
                     )}
                 </div>
 
-             
                 <div>
                     <label className="block text-sm font-bold text-[#252B42] mb-2">
                         Role *
@@ -201,12 +197,10 @@ function SignupForm() {
                     )}
                 </div>
 
-                
                 {roles.find(r => r.code === 'store')?.id.toString() === selectedRole && (
                     <div className="space-y-6 pt-4 border-t border-gray-200">
                         <h3 className="text-lg font-bold text-[#252B42]">Store Information</h3>
 
-                  
                         <div>
                             <label className="block text-sm font-bold text-[#252B42] mb-2">
                                 Store Name *
@@ -228,7 +222,6 @@ function SignupForm() {
                             )}
                         </div>
 
-                    
                         <div>
                             <label className="block text-sm font-bold text-[#252B42] mb-2">
                                 Store Phone *
@@ -250,7 +243,6 @@ function SignupForm() {
                             )}
                         </div>
 
-                     
                         <div>
                             <label className="block text-sm font-bold text-[#252B42] mb-2">
                                 Store Tax ID *
@@ -272,7 +264,6 @@ function SignupForm() {
                             )}
                         </div>
 
-                        
                         <div>
                             <label className="block text-sm font-bold text-[#252B42] mb-2">
                                 Store Bank Account (IBAN) *
@@ -296,7 +287,6 @@ function SignupForm() {
                     </div>
                 )}
 
-               
                 <button
                     type="submit"
                     disabled={loading}
@@ -312,7 +302,6 @@ function SignupForm() {
                     )}
                 </button>
 
-    
                 <p className="text-center text-sm text-[#737373]">
                     Already have an account?{' '}
                     <a href="/login" className="text-[#23A6F0] font-bold hover:underline">
