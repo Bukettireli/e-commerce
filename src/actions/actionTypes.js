@@ -12,3 +12,7 @@ export const SET_FILTER = 'SET_FILTER';
 export const SET_CART = 'SET_CART';
 export const SET_PAYMENT = 'SET_PAYMENT';
 export const SET_ADDRESS = 'SET_ADDRESS';
+export const LOGIN_REQUEST = 'LOGIN_REQUEST';
+export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
+export const LOGIN_FAILURE = 'LOGIN_FAILURE';
+export const LOGOUT_USER = 'LOGOUT_USER';
