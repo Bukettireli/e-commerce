@@ -7,12 +7,12 @@ const LoginPage = () => {
       <div className="max-w-7xl w-full">
         <div className="grid lg:grid-cols-2 gap-12 items-center">
           
-          {/* Left Side - Illustration/Branding */}
+
           <div className="hidden lg:block">
             <div className="relative">
-              {/* Decorative Background Elements */}
+        
               <div className="absolute inset-0 pointer-events-none overflow-visible">
-                {/* Large pink circle */}
+            
                 <div 
                   className="absolute rounded-full bg-[#FFE9EA]"
                   style={{
@@ -26,7 +26,6 @@ const LoginPage = () => {
                   }}
                 ></div>
 
-                {/* Small pink circles */}
                 <div 
                   className="absolute rounded-full bg-[#FFE9EA]"
                   style={{
@@ -51,7 +50,7 @@ const LoginPage = () => {
                   }}
                 ></div>
 
-                {/* Purple dots */}
+
                 <div 
                   className="absolute rounded-full bg-[#977DF4]"
                   style={{
@@ -75,11 +74,11 @@ const LoginPage = () => {
                 ></div>
               </div>
 
-              {/* Content */}
+    
               <div className="relative z-10 text-center lg:text-left">
                 <h1 className="text-5xl font-bold text-gray-900 mb-6">
                   Welcome to <br />
-                  <span className="text-blue-600">E-Commerce</span>
+                  <span className="text-blue-600">Bandage</span>
                 </h1>
                 <p className="text-xl text-gray-600 mb-8">
                   Sign in to access your personalized shopping experience
@@ -117,7 +116,7 @@ const LoginPage = () => {
             </div>
           </div>
 
-          {/* Right Side - Login Form */}
+
           <div className="flex justify-center lg:justify-end">
             <LoginForm />
           </div>

@@ -1,5 +1,8 @@
-import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom'; 
+import React, { useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css'; 
 
 import HomePage from './pages/HomePage';
 import ShopPage from './pages/ShopPage';
@@ -8,20 +11,31 @@ import AboutPage from './pages/AboutPage';
 import ContactPage from './pages/ContactPage';
 import TeamPage from './pages/TeamPage';
 import SignupPage from './pages/SignupPage';
-
+import LoginPage from './pages/LoginPage';
+import { verifyToken } from './actions/clientActions';
 
 function App() {
+  const dispatch = useDispatch();
+
+  // Uygulama açılışında token kontrolü
+  useEffect(() => {
+    dispatch(verifyToken());
+  }, []);
+
   return (
-    <BrowserRouter> 
-        <Switch>
-            <Route exact path="/" component={HomePage} /> 
-            <Route path="/product/:id" component={ProductDetailPage} />
-            <Route exact path="/shop" component={ShopPage} />
-            <Route exact path="/about" component={AboutPage} />
-             <Route exact path="/contact" component={ContactPage} />
-             <Route exact path="/team" component={TeamPage} />
-             <Route exact path="/signup" component={SignupPage} />
-        </Switch>
+    <BrowserRouter>
+      <ToastContainer /> 
+      
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/product/:id" element={<ProductDetailPage />} />
+        <Route path="/shop" element={<ShopPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+        <Route path="/team" element={<TeamPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/login" element={<LoginPage />} /> 
+      </Routes>
     </BrowserRouter>
   );
 }

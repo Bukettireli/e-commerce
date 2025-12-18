@@ -1,22 +1,38 @@
 import { useState, useRef, useEffect } from 'react';
-import { Search, ShoppingCart, User, Heart, ChevronDown } from 'lucide-react';
+import { Search, ShoppingCart, User, Heart, ChevronDown, LogOut } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { logoutUser } from '../../actions/clientActions';
+import { getGravatarUrl } from '../../utils/gravatar';
 
 function Header() {
     const [shopDropdownOpen, setShopDropdownOpen] = useState(false);
+    const [userDropdownOpen, setUserDropdownOpen] = useState(false);
     const dropdownRef = useRef(null);
-
+    const userDropdownRef = useRef(null);
     
+    const { user } = useSelector((state) => state.client);
+    const dispatch = useDispatch();
+
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
                 setShopDropdownOpen(false);
+            }
+            if (userDropdownRef.current && !userDropdownRef.current.contains(event.target)) {
+                setUserDropdownOpen(false);
             }
         };
 
         document.addEventListener('mousedown', handleClickOutside);
         return () => document.removeEventListener('mousedown', handleClickOutside);
     }, []);
+
+    const handleLogout = () => {
+        // Navigate parametresi kaldırıldı - kullanıcı bulunduğu sayfada kalır
+        dispatch(logoutUser());
+        setUserDropdownOpen(false);
+    };
 
     const navLinks = [
         { name: 'Home', href: '/' },
@@ -160,16 +176,67 @@ function Header() {
                     </div>
 
                     <div className="flex items-center gap-8">
-                        <div className="flex items-center gap-1 text-sm font-bold text-[#23A6F0]">
-                            <User size={12} />
-                            <Link to="/login" className="hover:text-[#1a8cd8] transition">
-                                Login
-                            </Link>
-                            <span>/</span>
-                            <Link to="/signup" className="hover:text-[#1a8cd8] transition">
-                                Register
-                            </Link>
-                        </div>
+                        {/* User Section - Conditional Rendering */}
+                        {user?.email ? (
+                            // Logged In User
+                            <div className="relative" ref={userDropdownRef}>
+                                <button
+                                    onClick={() => setUserDropdownOpen(!userDropdownOpen)}
+                                    className="flex items-center gap-2 text-sm font-bold text-[#23A6F0] hover:text-[#1a8cd8] transition"
+                                >
+                                    <img
+                                        src={getGravatarUrl(user.email, 32)}
+                                        alt={user.name || 'User'}
+                                        className="w-8 h-8 rounded-full border-2 border-[#23A6F0]"
+                                    />
+                                    <span className="max-w-[100px] truncate">
+                                        {user.name || user.email.split('@')[0]}
+                                    </span>
+                                    <ChevronDown 
+                                        size={14} 
+                                        className={`transition-transform duration-200 ${userDropdownOpen ? 'rotate-180' : ''}`}
+                                    />
+                                </button>
+
+                                {userDropdownOpen && (
+                                    <div className="absolute top-full right-0 mt-2 bg-white shadow-lg border border-gray-200 rounded-md py-2 z-50 min-w-[200px]">
+                                        <div className="px-4 py-2 border-b border-gray-200">
+                                            <p className="text-xs text-[#737373]">Signed in as</p>
+                                            <p className="text-sm font-bold text-[#252B42] truncate">
+                                                {user.email}
+                                            </p>
+                                        </div>
+                                        <Link
+                                            to="/profile"
+                                            className="flex items-center gap-2 px-4 py-2 text-sm text-[#737373] hover:bg-gray-50 hover:text-[#23A6F0] transition"
+                                            onClick={() => setUserDropdownOpen(false)}
+                                        >
+                                            <User size={16} />
+                                            Profile
+                                        </Link>
+                                        <button
+                                            onClick={handleLogout}
+                                            className="w-full flex items-center gap-2 px-4 py-2 text-sm text-red-500 hover:bg-red-50 transition"
+                                        >
+                                            <LogOut size={16} />
+                                            Logout
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
+                        ) : (
+                            // Not Logged In
+                            <div className="flex items-center gap-1 text-sm font-bold text-[#23A6F0]">
+                                <User size={12} />
+                                <Link to="/login" className="hover:text-[#1a8cd8] transition">
+                                    Login
+                                </Link>
+                                <span>/</span>
+                                <Link to="/signup" className="hover:text-[#1a8cd8] transition">
+                                    Register
+                                </Link>
+                            </div>
+                        )}
 
                         <div className="flex items-center gap-5">
                             <Search size={16} className="text-[#23A6F0] cursor-pointer" />
