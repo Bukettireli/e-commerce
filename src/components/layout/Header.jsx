@@ -14,6 +14,11 @@ function Header() {
     const { user } = useSelector((state) => state.client);
     const dispatch = useDispatch();
 
+    const dropdownCategories = {
+        women: ['Bags', 'Belts', 'Cosmetics', 'Hats'],
+        men: ['Bags', 'Belts', 'Cosmetics', 'Hats']
+    };
+
     useEffect(() => {
         const handleClickOutside = (event) => {
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
@@ -29,7 +34,6 @@ function Header() {
     }, []);
 
     const handleLogout = () => {
-        // Navigate parametresi kaldırıldı - kullanıcı bulunduğu sayfada kalır
         dispatch(logoutUser());
         setUserDropdownOpen(false);
     };
@@ -78,84 +82,37 @@ function Header() {
                                             {shopDropdownOpen && (
                                                 <div className="absolute top-full left-0 mt-2 bg-white shadow-lg border border-gray-200 rounded-md py-6 z-50 min-w-[400px]">
                                                     <div className="grid grid-cols-2 gap-8 px-8">
+                                                     
                                                         <div>
-                                                            <h6 className="text-base font-bold text-[#252B42] mb-4">Kadın</h6>
+                                                            <h6 className="text-base font-bold text-[#252B42] mb-4">Women</h6>
                                                             <div className="space-y-3">
-                                                                <Link 
-                                                                    to="/shop" 
-                                                                    className="block text-sm text-[#737373] hover:text-[#23A6F0]"
-                                                                    onClick={() => setShopDropdownOpen(false)}
-                                                                >
-                                                                    Bags
-                                                                </Link>
-                                                                <Link 
-                                                                    to="/shop" 
-                                                                    className="block text-sm text-[#737373] hover:text-[#23A6F0]"
-                                                                    onClick={() => setShopDropdownOpen(false)}
-                                                                >
-                                                                    Belts
-                                                                </Link>
-                                                                <Link 
-                                                                    to="/shop" 
-                                                                    className="block text-sm text-[#737373] hover:text-[#23A6F0]"
-                                                                    onClick={() => setShopDropdownOpen(false)}
-                                                                >
-                                                                    Cosmetics
-                                                                </Link>
-                                                                <Link 
-                                                                    to="/shop" 
-                                                                    className="block text-sm text-[#737373] hover:text-[#23A6F0]"
-                                                                    onClick={() => setShopDropdownOpen(false)}
-                                                                >
-                                                                    Bags
-                                                                </Link>
-                                                                <Link 
-                                                                    to="/shop" 
-                                                                    className="block text-sm text-[#737373] hover:text-[#23A6F0]"
-                                                                    onClick={() => setShopDropdownOpen(false)}
-                                                                >
-                                                                    Hats
-                                                                </Link>
+                                                                {dropdownCategories.women.map((category) => (
+                                                                    <Link 
+                                                                        key={category}
+                                                                        to={`/shop/women/${category.toLowerCase()}`}
+                                                                        className="block text-sm text-[#737373] hover:text-[#23A6F0] transition"
+                                                                        onClick={() => setShopDropdownOpen(false)}
+                                                                    >
+                                                                        {category}
+                                                                    </Link>
+                                                                ))}
                                                             </div>
                                                         </div>
+                                                        
+                                                      
                                                         <div>
-                                                            <h6 className="text-base font-bold text-[#252B42] mb-4">Erkek</h6>
+                                                            <h6 className="text-base font-bold text-[#252B42] mb-4">Men</h6>
                                                             <div className="space-y-3">
-                                                                <Link 
-                                                                    to="/shop" 
-                                                                    className="block text-sm text-[#737373] hover:text-[#23A6F0]"
-                                                                    onClick={() => setShopDropdownOpen(false)}
-                                                                >
-                                                                    Bags
-                                                                </Link>
-                                                                <Link 
-                                                                    to="/shop" 
-                                                                    className="block text-sm text-[#737373] hover:text-[#23A6F0]"
-                                                                    onClick={() => setShopDropdownOpen(false)}
-                                                                >
-                                                                    Belts
-                                                                </Link>
-                                                                <Link 
-                                                                    to="/shop" 
-                                                                    className="block text-sm text-[#737373] hover:text-[#23A6F0]"
-                                                                    onClick={() => setShopDropdownOpen(false)}
-                                                                >
-                                                                    Cosmetics
-                                                                </Link>
-                                                                <Link 
-                                                                    to="/shop" 
-                                                                    className="block text-sm text-[#737373] hover:text-[#23A6F0]"
-                                                                    onClick={() => setShopDropdownOpen(false)}
-                                                                >
-                                                                    Bags
-                                                                </Link>
-                                                                <Link 
-                                                                    to="/shop" 
-                                                                    className="block text-sm text-[#737373] hover:text-[#23A6F0]"
-                                                                    onClick={() => setShopDropdownOpen(false)}
-                                                                >
-                                                                    Hats
-                                                                </Link>
+                                                                {dropdownCategories.men.map((category) => (
+                                                                    <Link 
+                                                                        key={category}
+                                                                        to={`/shop/men/${category.toLowerCase()}`}
+                                                                        className="block text-sm text-[#737373] hover:text-[#23A6F0] transition"
+                                                                        onClick={() => setShopDropdownOpen(false)}
+                                                                    >
+                                                                        {category}
+                                                                    </Link>
+                                                                ))}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -176,9 +133,8 @@ function Header() {
                     </div>
 
                     <div className="flex items-center gap-8">
-                        {/* User Section - Conditional Rendering */}
+                        
                         {user?.email ? (
-                            // Logged In User
                             <div className="relative" ref={userDropdownRef}>
                                 <button
                                     onClick={() => setUserDropdownOpen(!userDropdownOpen)}
@@ -225,7 +181,6 @@ function Header() {
                                 )}
                             </div>
                         ) : (
-                            // Not Logged In
                             <div className="flex items-center gap-1 text-sm font-bold text-[#23A6F0]">
                                 <User size={12} />
                                 <Link to="/login" className="hover:text-[#1a8cd8] transition">

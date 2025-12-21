@@ -12,15 +12,22 @@ import ContactPage from './pages/ContactPage';
 import TeamPage from './pages/TeamPage';
 import SignupPage from './pages/SignupPage';
 import LoginPage from './pages/LoginPage';
+
+// Actions
 import { verifyToken } from './actions/clientActions';
+import { fetchCategories } from './actions/productActions';
 
 function App() {
   const dispatch = useDispatch();
 
-  // Uygulama açılışında token kontrolü
+  // Uygulama açılışında çalışacak işlemler
   useEffect(() => {
+    // 1. Token kontrolü (otomatik login)
     dispatch(verifyToken());
-  }, []);
+    
+    // 2. Kategorileri yükle
+    dispatch(fetchCategories());
+  }, [dispatch]);
 
   return (
     <BrowserRouter>

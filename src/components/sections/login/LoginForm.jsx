@@ -12,7 +12,6 @@ const LoginForm = () => {
   
   const [showPassword, setShowPassword] = React.useState(false);
 
-  // Kullanıcı login olmadan önce hangi sayfadaydı?
   const from = location.state?.from?.pathname || '/';
 
   const {
@@ -27,14 +26,12 @@ const LoginForm = () => {
       password: data.password,
     };
     
-    // Thunk action'ı dispatch et
     dispatch(loginUser(credentials, data.rememberMe, navigate, from));
   };
 
   return (
     <div className="w-full max-w-md">
       <div className="bg-white rounded-lg shadow-md p-8">
-        {/* Header */}
         <div className="mb-8">
           <h2 className="text-3xl font-bold text-gray-900 text-center">
             Welcome Back
@@ -44,9 +41,8 @@ const LoginForm = () => {
           </p>
         </div>
 
-        {/* Form */}
         <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-          {/* Email Field */}
+         
           <div>
             <label 
               htmlFor="email" 
@@ -76,7 +72,7 @@ const LoginForm = () => {
             )}
           </div>
 
-          {/* Password Field */}
+        
           <div>
             <label 
               htmlFor="password" 
@@ -90,7 +86,6 @@ const LoginForm = () => {
                 type={showPassword ? "text" : "password"}
                 {...register('password', {
                   required: 'Password is required'
-                  // No validation rules - accept any password format for login
                 })}
                 className={`w-full px-4 py-3 pr-12 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 transition-colors ${
                   errors.password ? 'border-red-500' : 'border-gray-300'
@@ -121,7 +116,7 @@ const LoginForm = () => {
             )}
           </div>
 
-          {/* Remember Me & Forgot Password */}
+         
           <div className="flex items-center justify-between">
             <div className="flex items-center">
               <input
@@ -148,7 +143,7 @@ const LoginForm = () => {
             </div>
           </div>
 
-          {/* Submit Button */}
+         
           <div>
             <button
               type="submit"
@@ -186,7 +181,6 @@ const LoginForm = () => {
           </div>
         </form>
 
-        {/* Sign Up Link */}
         <div className="mt-6 text-center">
           <p className="text-sm text-gray-600">
             Don't have an account?{' '}
@@ -199,7 +193,7 @@ const LoginForm = () => {
           </p>
         </div>
 
-        {/* Test Accounts Info */}
+        
         <div className="mt-8 p-4 bg-gray-50 rounded-lg border border-gray-200">
           <p className="text-xs text-gray-700 font-semibold mb-2">
             🔐 Test Accounts (Password: 123456):
