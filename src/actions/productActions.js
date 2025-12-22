@@ -45,6 +45,65 @@ export const setFilter = (filter) => ({
   payload: filter,
 });
 
+// Tek ürün detayı için action (yeni)
+export const setProductDetail = (product) => ({
+  type: 'SET_PRODUCT_DETAIL',
+  payload: product,
+});
+
+// ====================================
+// Fetch Single Product Thunk Action
+// ====================================
+
+/**
+ * fetchProduct - Tek bir ürünün detayını API'den çek
+ * 
+ * @param {number|string} productId - Ürün ID
+ * 
+ * ÖRNEK KULLANIM:
+ * dispatch(fetchProduct(322))
+ * → GET /products/322
+ * 
+ * RESPONSE FORMAT:
+ * {
+ *   "id": 322,
+ *   "name": "Gri Regular Astar",
+ *   "description": "...",
+ *   "price": 461.99,
+ *   "stock": 140,
+ *   "rating": 3.64,
+ *   "images": [...]
+ * }
+ */
+export const fetchProduct = (productId) => {
+  return async (dispatch) => {
+    try {
+      // 1. Loading başlat
+      dispatch(setFetchState('LOADING'));
+      
+      console.log(`Fetching product ${productId}...`);
+      
+      // 2. API'den ürün detayını çek
+      const response = await axiosInstance.get(`/products/${productId}`);
+      
+      console.log('✅ Product fetched:', response.data);
+      
+      // 3. Product detayını Redux'a kaydet
+      dispatch(setProductDetail(response.data));
+      
+      // 4. Loading bitir
+      dispatch(setFetchState('FETCHED'));
+
+    } catch (error) {
+      console.error('❌ Error fetching product:', error);
+      
+      // Hata durumunda null kaydet
+      dispatch(setProductDetail(null));
+      dispatch(setFetchState('FAILED'));
+    }
+  };
+};
+
 // ====================================
 // YENİ: Fetch Categories Thunk Action
 // ====================================
