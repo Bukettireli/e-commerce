@@ -173,44 +173,59 @@ function CartPage() {
                   Order Summary
                 </h2>
 
-                <div className="space-y-3 mb-6">
+                {/* Pricing Breakdown */}
+                <div className="space-y-4 mb-6">
+                  {/* Selected Items */}
                   <div className="flex justify-between text-sm">
                     <span className="text-[#737373]">Selected Items:</span>
                     <span className="font-bold text-[#252B42]">{selectedCount}</span>
                   </div>
-                  <div className="flex justify-between text-sm">
-                    <span className="text-[#737373]">Subtotal:</span>
+
+                  {/* Products Total */}
+                  <div className="flex justify-between">
+                    <span className="text-[#737373]">Products Total:</span>
                     <span className="font-bold text-[#252B42]">
                       ${totalAmount.toFixed(2)}
                     </span>
                   </div>
-                  <div className="flex justify-between text-sm">
+
+                  {/* Shipping */}
+                  <div className="flex justify-between">
                     <span className="text-[#737373]">Shipping:</span>
                     <span className="font-bold text-[#2DC071]">Free</span>
                   </div>
+
+                  {/* Discount */}
+                  <div className="flex justify-between">
+                    <span className="text-[#737373]">Discount:</span>
+                    <span className="font-bold text-[#E74040]">-$0.00</span>
+                  </div>
                 </div>
 
+                {/* Grand Total */}
                 <div className="border-t border-[#ECECEC] pt-4 mb-6">
-                  <div className="flex justify-between">
-                    <span className="text-lg font-bold text-[#252B42]">Total:</span>
+                  <div className="flex justify-between items-center">
+                    <span className="text-lg font-bold text-[#252B42]">Grand Total:</span>
                     <span className="text-2xl font-bold text-[#23A6F0]">
                       ${totalAmount.toFixed(2)}
                     </span>
                   </div>
                 </div>
 
+                {/* Create Order Button */}
                 <button
                   disabled={selectedCount === 0}
-                  className="w-full bg-[#23A6F0] text-white py-3 rounded font-bold hover:bg-[#1a8cd8] transition disabled:bg-[#BDBDBD] disabled:cursor-not-allowed"
+                  className="w-full bg-[#23A6F0] text-white py-4 rounded font-bold text-base hover:bg-[#1a8cd8] transition disabled:bg-[#BDBDBD] disabled:cursor-not-allowed mb-3"
                 >
-                  Proceed to Checkout
+                  Create Order
                 </button>
 
+                {/* Continue Shopping Link */}
                 <Link
                   to="/shop"
-                  className="block text-center text-[#23A6F0] text-sm font-bold mt-4 hover:text-[#1a8cd8] transition"
+                  className="block text-center text-[#23A6F0] text-sm font-bold hover:text-[#1a8cd8] transition"
                 >
-                  Continue Shopping
+                  ← Continue Shopping
                 </Link>
               </div>
             </div>
