@@ -40,9 +40,12 @@ function App() {
       
       <Routes>
         <Route path="/" element={<HomePage />} />
-        <Route path="/product/:id" element={<ProductDetailPage />} />
         <Route path="/shop" element={<ShopPage />} />
         <Route path="/shop/:gender/:categoryName/:categoryId" element={<ShopPage />} />
+        {/* Product Detail Route - TAM URL */}
+        <Route path="/shop/:gender/:categoryName/:categoryId/:productNameSlug/:productId" element={<ProductDetailPage />} />
+        {/* Fallback Route - ESKİ URL Format */}
+        <Route path="/product/:id" element={<ProductDetailPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/team" element={<TeamPage />} />

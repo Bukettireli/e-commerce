@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { logoutUser } from '../../actions/clientActions';
 import { getWomenCategories, getMenCategories } from '../../actions/productActions';
 import { getGravatarUrl } from '../../utils/gravatar';
+import CartDropdown from '../cart/CartDropdown';
 
 function Header() {
     const [shopDropdownOpen, setShopDropdownOpen] = useState(false);
@@ -205,12 +206,8 @@ function Header() {
                         <div className="flex items-center gap-5">
                             <Search size={16} className="text-[#23A6F0] cursor-pointer" />
                             
-                            <div className="relative cursor-pointer">
-                                <ShoppingCart size={16} className="text-[#23A6F0]" />
-                                <span className="absolute -top-2 -right-2 text-xs font-normal text-[#23A6F0]">
-                                    1
-                                </span>
-                            </div>
+                            {/* Cart Dropdown */}
+                            <CartDropdown />
 
                             <div className="relative cursor-pointer">
                                 <Heart size={16} className="text-[#23A6F0]" />
