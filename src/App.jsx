@@ -27,16 +27,22 @@ function App() {
     
     // 2. Kategorileri yükle
     dispatch(fetchCategories());
-  }, [dispatch]);
+  }, []); // dispatch'i kaldırdık - çünkü dispatch değişmez
 
   return (
-    <BrowserRouter>
+    <BrowserRouter
+      future={{
+        v7_startTransition: true,
+        v7_relativeSplatPath: true,
+      }}
+    >
       <ToastContainer /> 
       
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/product/:id" element={<ProductDetailPage />} />
         <Route path="/shop" element={<ShopPage />} />
+        <Route path="/shop/:gender/:categoryName/:categoryId" element={<ShopPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="/team" element={<TeamPage />} />

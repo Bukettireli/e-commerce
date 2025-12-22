@@ -108,6 +108,18 @@ export const getMenCategories = (categories) => {
   return categories.filter(cat => cat.code.startsWith('e:'));
 };
 
+/**
+ * Top N kategoriyi rating'e göre getir
+ * @param {Array} categories - Tüm kategoriler
+ * @param {Number} limit - Kaç kategori (default: 5)
+ * @returns {Array} - En yüksek rating'li kategoriler
+ */
+export const getTopCategories = (categories, limit = 5) => {
+  return [...categories]
+    .sort((a, b) => b.rating - a.rating)
+    .slice(0, limit);
+};
+
 // ====================================
 // Fetch Products Thunk Action
 // ====================================
@@ -115,8 +127,22 @@ export const getMenCategories = (categories) => {
 /**
  * fetchProducts - API'den ürünleri çek
  * 
- * AMAÇ: Shop sayfasında ürünleri göstermek için
- *       API'den ürünleri çekip Redux'a kaydet
+ * QUERY PARAMETERS:
+ * @param {Object} params - Query parametreleri
+ * @param {string} params.category - Kategori ID (örn: "2")
+ * @param {string} params.sort - Sıralama (örn: "price:desc", "rating:asc")
+ * @param {string} params.filter - Filtre metni (örn: "siyah")
+ * @param {number} params.limit - Kaç ürün (default: 25)
+ * @param {number} params.offset - Kaç ürün atla (default: 0)
+ * 
+ * ÖRNEK KULLANIM:
+ * dispatch(fetchProducts({ category: "2", sort: "price:desc", filter: "siyah", limit: 25, offset: 0 }))
+ * → GET /products?category=2&sort=price:desc&filter=siyah&limit=25&offset=0
+ * 
+ * PAGINATION ÖRNEKLER:
+ * Sayfa 1: limit=25&offset=0   (0-25 arası)
+ * Sayfa 2: limit=25&offset=25  (25-50 arası)
+ * Sayfa 3: limit=25&offset=50  (50-75 arası)
  * 
  * RESPONSE FORMAT:
  * {
@@ -124,27 +150,55 @@ export const getMenCategories = (categories) => {
  *   products: [...]
  * }
  */
-export const fetchProducts = () => {
-  return async (dispatch, getState) => {
+export const fetchProducts = (params = {}) => {
+  return async (dispatch) => {
     try {
       // 1. Loading başlat
       dispatch(setFetchState('LOADING'));
       
-      console.log('Fetching products from API...');
+      console.log('Fetching products with params:', params);
       
-      // 2. API'den ürünleri çek
-      const response = await axiosInstance.get('/products');
+      // 2. Query string oluştur
+      const queryParams = new URLSearchParams();
+      
+      if (params.category) {
+        queryParams.append('category', params.category);
+      }
+      if (params.sort) {
+        queryParams.append('sort', params.sort);
+      }
+      if (params.filter) {
+        queryParams.append('filter', params.filter);
+      }
+      
+      // Pagination parameters
+      const limit = params.limit || 25;
+      const offset = params.offset || 0;
+      queryParams.append('limit', limit);
+      queryParams.append('offset', offset);
+      
+      const queryString = queryParams.toString();
+      const url = `/products?${queryString}`;
+      
+      console.log('API URL:', url);
+      
+      // 3. API'den ürünleri çek
+      const response = await axiosInstance.get(url);
       
       console.log('✅ Products fetched:', response.data.products.length, 'products');
-      console.log('Total products in DB:', response.data.total);
+      console.log('Total products:', response.data.total);
       
-      // 3. Total'i Redux'a kaydet
+      // 4. Total'i Redux'a kaydet
       dispatch(setTotal(response.data.total));
       
-      // 4. Products'ı Redux'a kaydet
+      // 5. Products'ı Redux'a kaydet
       dispatch(setProductList(response.data.products));
       
-      // 5. Loading bitir
+      // 6. Limit ve Offset'i Redux'a kaydet
+      dispatch(setLimit(limit));
+      dispatch(setOffset(offset));
+      
+      // 7. Loading bitir
       dispatch(setFetchState('FETCHED'));
 
     } catch (error) {

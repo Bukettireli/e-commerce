@@ -3,6 +3,7 @@ import { Search, ShoppingCart, User, Heart, ChevronDown, LogOut } from 'lucide-r
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { logoutUser } from '../../actions/clientActions';
+import { getWomenCategories, getMenCategories } from '../../actions/productActions';
 import { getGravatarUrl } from '../../utils/gravatar';
 
 function Header() {
@@ -12,12 +13,12 @@ function Header() {
     const userDropdownRef = useRef(null);
     
     const { user } = useSelector((state) => state.client);
+    const { categories } = useSelector((state) => state.product);
     const dispatch = useDispatch();
 
-    const dropdownCategories = {
-        women: ['Bags', 'Belts', 'Cosmetics', 'Hats'],
-        men: ['Bags', 'Belts', 'Cosmetics', 'Hats']
-    };
+    // API'den gelen kategorileri filtrele
+    const womenCategories = getWomenCategories(categories);
+    const menCategories = getMenCategories(categories);
 
     useEffect(() => {
         const handleClickOutside = (event) => {
@@ -82,37 +83,45 @@ function Header() {
                                             {shopDropdownOpen && (
                                                 <div className="absolute top-full left-0 mt-2 bg-white shadow-lg border border-gray-200 rounded-md py-6 z-50 min-w-[400px]">
                                                     <div className="grid grid-cols-2 gap-8 px-8">
-                                                     
+                                                        {/* KADIN KATEGORİLERİ - API'den */}
                                                         <div>
-                                                            <h6 className="text-base font-bold text-[#252B42] mb-4">Women</h6>
+                                                            <h6 className="text-base font-bold text-[#252B42] mb-4">Kadın</h6>
                                                             <div className="space-y-3">
-                                                                {dropdownCategories.women.map((category) => (
-                                                                    <Link 
-                                                                        key={category}
-                                                                        to={`/shop/women/${category.toLowerCase()}`}
-                                                                        className="block text-sm text-[#737373] hover:text-[#23A6F0] transition"
-                                                                        onClick={() => setShopDropdownOpen(false)}
-                                                                    >
-                                                                        {category}
-                                                                    </Link>
-                                                                ))}
+                                                                {womenCategories.length > 0 ? (
+                                                                    womenCategories.map(category => (
+                                                                        <Link 
+                                                                            key={category.id}
+                                                                            to={`/shop/kadin/${category.title.toLowerCase()}/${category.id}`}
+                                                                            className="block text-sm text-[#737373] hover:text-[#23A6F0] transition"
+                                                                            onClick={() => setShopDropdownOpen(false)}
+                                                                        >
+                                                                            {category.title}
+                                                                        </Link>
+                                                                    ))
+                                                                ) : (
+                                                                    <p className="text-sm text-gray-400">Loading...</p>
+                                                                )}
                                                             </div>
                                                         </div>
                                                         
-                                                      
+                                                        {/* ERKEK KATEGORİLERİ - API'den */}
                                                         <div>
-                                                            <h6 className="text-base font-bold text-[#252B42] mb-4">Men</h6>
+                                                            <h6 className="text-base font-bold text-[#252B42] mb-4">Erkek</h6>
                                                             <div className="space-y-3">
-                                                                {dropdownCategories.men.map((category) => (
-                                                                    <Link 
-                                                                        key={category}
-                                                                        to={`/shop/men/${category.toLowerCase()}`}
-                                                                        className="block text-sm text-[#737373] hover:text-[#23A6F0] transition"
-                                                                        onClick={() => setShopDropdownOpen(false)}
-                                                                    >
-                                                                        {category}
-                                                                    </Link>
-                                                                ))}
+                                                                {menCategories.length > 0 ? (
+                                                                    menCategories.map(category => (
+                                                                        <Link 
+                                                                            key={category.id}
+                                                                            to={`/shop/erkek/${category.title.toLowerCase()}/${category.id}`}
+                                                                            className="block text-sm text-[#737373] hover:text-[#23A6F0] transition"
+                                                                            onClick={() => setShopDropdownOpen(false)}
+                                                                        >
+                                                                            {category.title}
+                                                                        </Link>
+                                                                    ))
+                                                                ) : (
+                                                                    <p className="text-sm text-gray-400">Loading...</p>
+                                                                )}
                                                             </div>
                                                         </div>
                                                     </div>
@@ -133,7 +142,7 @@ function Header() {
                     </div>
 
                     <div className="flex items-center gap-8">
-                        
+                        {/* User Section */}
                         {user?.email ? (
                             <div className="relative" ref={userDropdownRef}>
                                 <button
