@@ -144,7 +144,7 @@ function ProductDetailPage() {
                     <button
                       key={index}
                       onClick={() => setSelectedImage(index)}
-                      className={`flex-shrink-0 w-[100px] h-[75px] rounded-lg overflow-hidden border-2 transition ${
+                      className={`shrink-0 w-[100px] h-[75px] rounded-lg overflow-hidden border-2 transition ${
                         selectedImage === index ? 'border-[#23A6F0]' : 'border-gray-200 hover:border-gray-300'
                       }`}
                       aria-label={`View image ${index + 1}`}
